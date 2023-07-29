@@ -48,10 +48,12 @@ body * {
 }
 
 #container {
-  width: 360px;
+  width: 100%;
+  max-width: 588px;
   /*A altura da caixa se ajusta confome o conteúdo dela.*/
-  margin: 56px auto 32px auto;
+  margin: 56px auto 0px;
   /*Aplica espaçamento externo nos 4 lados*/
+  padding: 0 24px;
 }
 
 #profile {
