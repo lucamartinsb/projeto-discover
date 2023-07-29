@@ -64,8 +64,10 @@ body * {
 
 #profile img {
   width: 112px;
+  height: 112px;
+  border-radius: 50%;
   /*Block: Ocupa 100% da largura do elemento pai pra si, sendo posicionado abaixo do elemento anterior e forçando o proximo elemento para próxima linha. Aceita margin top e bottom bem como width e heigth. A altura é definida de acordo com o conteúdo interno.
-    Inline: Padrão de imagens, margin auto não aplicável.*/
+  Inline: Padrão de imagens, margin auto não aplicável.*/
 }
 
 #profile p {

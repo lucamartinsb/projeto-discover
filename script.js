@@ -13,10 +13,11 @@ function toggleMode() {
   */
  //Já existe a função acima:
  if(html.classList.toggle('light')) {
-  img.setAttribute('src', './assets/avatar-light.png')
-   img.setAttribute('alt', 'foto de Mayk Brito usando oculos escuro, de jaqueta e fundo azul')
+  img.setAttribute('src', './assets/profile-day.jpg');
+  img.setAttribute('alt', 'foto de Luca Martins usando oculos escuro e de blusa azul escuro, na rua.')
  } else {
-   img.setAttribute('src', './assets/avatar.png')
+   img.setAttribute('src', './assets/profile-night.jpg');
+   img.setAttribute('alt', 'foto de Luca Martins, usando blusa vermelha, em casa.')
  }
 
 
