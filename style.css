@@ -1,0 +1,193 @@
+/*Uma pseudo-classe CSS :root se equipara à raiz de uma árvore,
+que por sua vez representa o documento. Aplicado ao HTML,
+:root representa o elemento <html> e é idêntico ao seletor html,
+exceto que sua especificidade é mais alta. */
+:root {
+  --text-color: white; /*Definindo um nome para uma variável no qual recebe um parametro. Essa variável será usada na função var()*/
+  --bg-url: url(./assets/bg-mobile.jpg);
+  --stroke-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.2);
+  --switch-bg-url: url(./assets/MoonStars.svg);
+}
+
+.light {
+  --text-color: black;
+  --bg-url: url(./assets/bg-mobile-light.jpg);
+  --stroke-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/Sun.svg);
+}
+
+* {
+  /*Resetando o CSS*/
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*Mantém os valores originais de width e height, fazendo com que os valores de border e padding se adaptem as dimensões estipuladas para a caixa*/
+}
+
+body {
+  /*   
+   background-image: url(./assets/bg-mobile.jpg); /*Por padrão a imagem se repete;
+   background-repeat: no-repeat; /*Faz a imagem não se repetir;
+   background-position: top center; /*Centralizando a imagem no eixo x e no eixo y na posição do topo;
+   background-size: cover; /*Cover cobre todo o espaço em branco que sobrou ou espaço visível. Atua em todos os tamanhos de tela;
+  */
+  /* Podemos agrupar todas essas propriedades em uma só, chama-se shorthand  ou atalho: */
+  background: var(--bg-url) no-repeat top center/cover;
+}
+
+body * {
+  /*Asterisco significa que será aplicado para tudo dentro do body*/
+  font-family: 'Inter', sans-serif;
+  color: var(--text-color) /*Todas as cores que estão levando esse color são substituídas pela variável --text-color*/
+}
+
+#container {
+  width: 360px;
+  /*A altura da caixa se ajusta confome o conteúdo dela.*/
+  margin: 56px auto 32px auto;
+  /*Aplica espaçamento externo nos 4 lados*/
+}
+
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+  /*Block: Ocupa 100% da largura do elemento pai pra si, sendo posicionado abaixo do elemento anterior e forçando o proximo elemento para próxima linha. Aceita margin top e bottom bem como width e heigth. A altura é definida de acordo com o conteúdo interno.
+    Inline: Padrão de imagens, margin auto não aplicável.*/
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  /*Altura da linha*/
+  margin-top: 8px;
+}
+
+#switch {
+  /*
+  Relativizar o absoluto do button;
+  Usando o position Relative o elemento passa a aceitar as propriedades Top, Bottom, Left e Right. 
+  Com elas você pode alterar o posicionamento do elemento.
+  Z-index é usado para movimentar o elemento entre camadas (layers), trazendo a frente ou atrás de outros elementos.
+  */
+  position: relative;
+  margin: 4px auto;
+  width: 64px; /*Mesma largura do track*/
+}
+
+#switch button {
+  width: 32px;
+  height: 32px;
+  background: white var(--switch-bg-url) no-repeat center;
+  border: 0;
+  border-radius: 50%;
+  /*
+  Absoluto está relativo ao switch;
+  A posição Absolute pode posicionar qualquer elemento de acordo com o elemento pai que tenha uma posição diferente de static. Nesse caso, o elemento pai é a div switch que tem seu position como relative.
+  */
+  position: absolute;
+  transform: translateY(-50%); /*de acordo com a linha do eixo Y do switch*/
+  top: 50%; /*dos -50%, volte a metade*/
+  left: 0; /*lado esquerdo*/
+  z-index: 1;
+}
+
+#switch span {
+  display: block; /*Padrão é inline e não aceita width*/
+  border-radius: 9999px;
+  max-width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--stroke-color);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.light #switch button {
+  right: 0;
+  left: auto;
+}
+
+ul {
+  /*Lista não ordenada*/
+  list-style: none;
+  /*Para tirar os pontos*/
+  /*Colocando display flex para poder usar o gap entre os elementos de ul (as 'li')*/
+  display: flex;
+  /*Aplica-se aos seus elementos filhos (tudo que estiver dentro da ul). Faz os filhos ficarem lado a lado e tenta os encaixar de forma harmonica e flexivel.*/
+  flex-direction: column;
+  /*Elementos ordenados na vertical, de cima para baixo*/
+  gap: 16px;
+  /*Coloca espaçamento entre os elementos filhos*/
+  padding: 24px 0px;
+}
+
+ul li a {
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  /*Aplicando compatibilidade do filtro para safari 9*/
+  background-color: var(--surface-color);
+
+  border: 1px solid var(--stroke-color);
+  border-radius: 8px;
+
+  display: flex;
+  /*Padrão da direção é row (linha)*/
+  justify-content: center;
+  /*Alinha os elementos em realção ao eixo principal (main axis)*/
+  align-items: center;
+  /*Alinha os elementos em relação ao eixo perpedicular (across axis)*/
+
+  padding: 16px 24px;
+
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: background 0.5s;
+  /*transição entre backgrounds quando passa o mouse e sai*/
+}
+
+ul li a:hover {
+  /*pseudo-seletor ou sudo selector*/
+  background-color: var(--surface-color-hover);
+  border: 1.5px solid white;
+}
+
+#social-links {
+  display: flex;
+  justify-content: center;
+  /*16 de gap + (8 + 8) de margin do container do icone */
+  padding: 24px 0px;
+  font-size: 24px;
+  /*Ajusta o tamanho do svg*/
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  transition: background 0.2s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 24px;
+  text-align: center;
+  padding: 24px 0px;
+}
